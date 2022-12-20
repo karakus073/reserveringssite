@@ -1,7 +1,7 @@
 <?php
 require 'config2.php';
 
-$query = "SELECT * FROM reservation";
+$query = "SELECT * FROM reservation ";
 
 $result = mysqli_query($mysqli, $query);
 
