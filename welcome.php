@@ -50,7 +50,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <label>Extra</label><br>
         <input class="extraa" type="text" name="extra" class="form-control" required>
         <span class="invalid-feedback"></span>
-    </div>
+    </div><br>
     <input class="button button5 submit" type="submit" value="Submit" name="submit">
 </form>
 </body>
