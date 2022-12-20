@@ -4,6 +4,8 @@ if (isset($_POST['submit'])) {
         
         
         $datum = $_POST['datum'];
+
+        echo $datum;
         $persoon = $_POST['persoon'];
         $extra = $_POST['extra'];
         $host = "localhost";
@@ -19,7 +21,7 @@ if (isset($_POST['submit'])) {
             $Insert = "INSERT INTO reservation(datum, persoon, extra) values(?, ?, ?)";
             
           
-            $stmt = $conn->prepare($Insert);
+                $stmt = $conn->prepare($Insert);
                 $stmt->bind_param("sis",$datum, $persoon, $extra);
                 if ($stmt->execute()) {
                     header("location: index.html");

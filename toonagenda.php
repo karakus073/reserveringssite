@@ -1,34 +1,30 @@
 <?php
-require 'config.php';
+require 'config2.php';
 
-$query = "SELECT * FROM crud_php";
-
+$query = "SELECT * FROM res";
 $result = mysqli_query($mysqli, $query);
 
 if (mysqli_num_rows($result) > 0)
 {
     echo "<table border='1px'>";
-    echo "<tr><th>Onderwerp</th><th>Inhoud</th><th>Detail</th><th>Verwijder</th><th>Aanpas</th></tr>";
+    echo "<tr><th>Datum</th><th>Personen</th><th>Extra</th></tr>";
+    
     while ($item = mysqli_fetch_assoc($result)) 
     {
-        echo "<tr>";
-
-            echo "<td>" . $item['Onderwerp'] . "</td>";
-            echo "<td>" . $item['Inhoud'] . "</td>";
-            echo "<td><a href='detail.php?id=" . $item['ID'] . "'>details</a></td>";
-            echo "<td><a href='verwijder.php?id=" . $item['ID'] . "'>verwijder</a></td>";
-            echo "<td><a href='pasaan.php?id=" . $item['ID'] . "'>aanpas</a></td>";
-        echo "</tr>";
+            echo "<tr>";
+            echo "<td>" . $item['datum'] . "</td>";
+            echo "<td>" . $item['personen'] . "</td>";
+            echo "<td>" . $item['extra'] . "</td>";
+            echo "</tr>";
     }
+
     echo "</table>";
 } 
+
 else
 {
     echo "<p>Geen items gevonden!<p/>";
 }
-            echo "<a href='toevoeg.php'>TOEVOEG<a/></br>";
-            echo "<a href='logout.php'>LOGOUT<a/>";
-
 $result = mysqli_query($mysqli, $query);
 
 if  (!$result)
@@ -37,4 +33,4 @@ if  (!$result)
     echo "<p>" . $query . "</p>";
     echo "<p>" . mysqli_error($mysqli) . "</p>";
     exit;
-}
+} 
