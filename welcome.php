@@ -23,7 +23,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         .button5 {background-color: white; color: black; border: 2px solid #555555;}
         .button5:hover {background-color: #555555;color: white;}
         .datee{width: 200px;}
-        .personene{width: 200px}
+        .personene{width: 200px;}
         .extraa{width: 200px}
     </style>
 </head>
