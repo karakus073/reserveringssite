@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 $db_hostname = 'localhost';
 
-$db_username = '87250';
+$db_username = 'zekir2';
 
 $db_password = 'Putsebocht72';
 
