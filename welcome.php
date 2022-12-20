@@ -22,7 +22,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         a{width: 200px; font-size: 16px; color:black; display: inline-block; text-decoration:none; !important}
         .button5 {background-color: white; color: black; border: 2px solid #555555;}
         .button5:hover {background-color: #555555;color: white;}
-        .date{margin: 0 auto;}
+        .datee{width: 200px;}
+        .personene{width: 200px}
+        .extraa{width: 200px}
     </style>
 </head>
 <body>
@@ -35,18 +37,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia maxime inventore eius cumque assumenda doloribus veniam tempore, et a sint alias est nisi rem eligendi vel quos dolores iure quod. Lorem ipsum dolor sit,<br><br> amet consectetur adipisicing elit. Minima animi alias sequi cumque perspiciatis! Officia necessitatibus modi tenetur nostrum sed vel labore consequatur libero, mollitia possimus nesciunt quidem ipsa architecto!</p><br>
     <p>Vul hier de informatie in voor de informatieavond:</p><br>
     <div class="form-group">
-        <label class="date">Datum</label>
-        <input type="date" name="datum" class="form-control" required>
+        <label class="date">Datum</label><br>
+        <input class="datee" type="date" name="datum" class="form-control" required>
         <span class="invalid-feedback"></span>
     </div>
     <div class="form-group">
-        <label>Persoon</label>
-        <input type="text" name="persoon" class="form-control" required>
+        <label>Persoon</label><br>
+        <input class="personene" type="text" name="persoon" class="form-control" required>
         <span class="invalid-feedback"></span>
     </div>
     <div class="form-group">
-        <label>Extra</label>
-        <input type="text" name="extra" class="form-control" required>
+        <label>Extra</label><br>
+        <input class="extraa" type="text" name="extra" class="form-control" required>
         <span class="invalid-feedback"></span>
     </div>
     <input class="button button5 submit" type="submit" value="Submit" name="submit">
