@@ -1,26 +1,25 @@
 <?php
-require 'config2.php';
+require 'config.php';
 
-$query = "SELECT * FROM res";
+$query = "SELECT * FROM reservation";
+
 $result = mysqli_query($mysqli, $query);
 
 if (mysqli_num_rows($result) > 0)
 {
     echo "<table border='1px'>";
     echo "<tr><th>Datum</th><th>Personen</th><th>Extra</th></tr>";
-    
     while ($item = mysqli_fetch_assoc($result)) 
     {
-            echo "<tr>";
-            echo "<td>" . $item['datum'] . "</td>";
-            echo "<td>" . $item['personen'] . "</td>";
-            echo "<td>" . $item['extra'] . "</td>";
-            echo "</tr>";
-    }
+        echo "<tr>";
 
+            echo "<td>" . $item['datum'] . "</td>";
+            echo "<td>" . $item['persoon'] . "</td>";
+            echo "<td>" . $item['extra'] . "</td>";
+        echo "</tr>";
+    }
     echo "</table>";
 } 
-
 else
 {
     echo "<p>Geen items gevonden!<p/>";
@@ -33,4 +32,4 @@ if  (!$result)
     echo "<p>" . $query . "</p>";
     echo "<p>" . mysqli_error($mysqli) . "</p>";
     exit;
-} 
+}
