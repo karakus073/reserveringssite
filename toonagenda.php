@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'config2.php';
 
 $query = "SELECT * FROM reservation";
 
