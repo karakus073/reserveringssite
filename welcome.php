@@ -1,12 +1,3 @@
-<?php
-session_start();
- 
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}
-?>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +24,29 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <button class="button button5"><a href="reset-password.php" class="">Reset uw wachtwoord</a></button>
     <button class="button button5"><a href="logout.php" class="">Log uit uw account</a></button><br>
     <br>
-        <form action="insertest.php" method="post">    
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia maxime inventore eius cumque assumenda doloribus veniam tempore, et a sint alias est nisi rem eligendi vel quos dolores iure quod. Lorem ipsum dolor sit,<br><br> amet consectetur adipisicing elit. Minima animi alias sequi cumque perspiciatis! Officia necessitatibus modi tenetur nostrum sed vel labore consequatur libero, mollitia possimus nesciunt quidem ipsa architecto!</p><br>
-    <p>Vul hier de informatie in voor de informatieavond:</p><br>
+<?php
+session_start();
+ 
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+} else{
+    require_once "config.php";
+
+    $sql = "SELECT id, userid FROM reservation WHERE userid = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            mysqli_stmt_bind_param($stmt, "i", $_SESSION['id']);
+            
+            if(mysqli_stmt_execute($stmt)){
+                mysqli_stmt_store_result($stmt);
+                if(mysqli_stmt_num_rows($stmt) > 0){
+                    echo"Je hebt al een resevering";
+                }else{
+?>
+<form action="insertest.php" method="post"> 
+<p>Vul hier de informatie in voor de informatieavond:</p><br>
     <div class="form-group">
         <label class="date">Datum</label><br>
         <input class="datee" type="date" name="datum" class="form-control" required>
@@ -53,5 +64,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div><br>
     <input class="button button5 submit" type="submit" value="Submit" name="submit">
 </form>
+<?php
+                }
+            } else{
+                echo"execute mislukt";
+            }
+        }else{
+            echo"prepair mislukt";
+        }
+}
+?>
 </body>
 </html>

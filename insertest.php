@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
 if (isset($_POST['submit'])) {
     if (isset($_POST['datum']) &&  isset($_POST['persoon']) && isset($_POST['extra'])) {
         
@@ -12,34 +18,17 @@ if (isset($_POST['submit'])) {
         $dbPassword = "Putsebocht72";
         $dbName = "login_beroeps";
 
-
         $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-
-        // require 'config2.php';
-
-        // $query = "SELECT * FROM reservation WHERE $datum";
-
-        // $result = mysqli_query($mysqli, $query);
-
-        // if (mysqli_num_rows($result) > 0)
-        // {
-
-
-        //     header("location: welcome.php");
-        //     exit();
-        // }
-
 
         if ($conn->connect_error) {
             die('Could not connect to the database.');
         }
         else {
       
-            $Insert = "INSERT INTO reservation(datum, persoon, extra) values(?, ?, ?)";
+            $Insert = "INSERT INTO reservation(datum, persoon, extra, userid) values(?, ?, ?, ?)";
             
-          
                 $stmt = $conn->prepare($Insert);
-                $stmt->bind_param("sis",$datum, $persoon, $extra);
+                $stmt->bind_param("sisi",$datum, $persoon, $extra, $_SESSION['id']);
                 if ($stmt->execute()) {
                     header("location: index.html");
                 }
@@ -47,8 +36,6 @@ if (isset($_POST['submit'])) {
                     echo $stmt->error;
                 }
         
-            
-              
             $stmt->close();
             $conn->close();
         }
